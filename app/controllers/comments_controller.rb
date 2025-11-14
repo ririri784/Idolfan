@@ -3,33 +3,14 @@ class CommentsController < ApplicationController
 
   def create
     topic = Topic.find(params[:topic_id])
-    comment = topic.comments.build(comment_params)
+    comment = topic.comments.build(comment_params) #buildを使い、contentとtweet_idの二つを同時に代入
     comment.user_id = current_user.id
-
     if comment.save
-      flash[:notice] = "コメントしました"
-      redirect_to topic_path(topic)
+      flash[:success] = "コメントしました"
+      redirect_back(fallback_location: root_path) #直前のページにリダイレクト
     else
-      flash[:alert] = "コメントできませんでした"
-      redirect_to topic_path(topic)
-    end
-  end
-
-  def edit
-    @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.find(params[:id])
-  end
-
-  def update
-    @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.find(params[:id])
-
-    if @comment.update(comment_params)
-      flash[:notice] = "コメントを更新しました"
-      redirect_to topic_path(@topic)
-    else
-      flash[:alert] = "更新できませんでした"
-      render :edit
+      flash[:success] = "コメントできませんでした"
+      redirect_back(fallback_location: root_path) #直前のページにリダイレクト
     end
   end
 
