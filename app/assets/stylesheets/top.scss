@@ -1,0 +1,130 @@
+.top-page {
+  background-color: #fff6f6;
+  font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
+  color: #5a2e2e;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+/* ヘッダー */
+.header {
+  background-color: #603c3c;
+  padding: 10px 20px;
+  text-align: right;
+  
+
+  .nav-link {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+    font-size: 18px;
+  }
+
+  .nav-link:hover {
+    text-decoration: underline;
+  }
+}
+
+
+
+
+/* What is IdolFan?? セクション */
+.intro {
+  margin: 40px auto;
+  width: 80%;
+
+  h2 {
+    font-size: 22px;
+    color: #8b3f3f;
+    margin-bottom: 10px;
+  }
+
+  .intro-box {
+    background-color: white;
+    border: 1px solid #d9d9d9;
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+
+    p {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: #3a3a3a;
+    }
+  }
+}
+
+/* 下部2カラム */
+.bottom-section {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 60px;
+  margin-top: 40px;
+
+  h3 {
+    font-size: 20px;
+    color: #8b3f3f;
+    margin-bottom: 15px;
+  }
+
+  .left {
+    text-align: center;
+
+    .circle-btn {
+      background-color: white;
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      border: 1px solid #d9d9d9;
+    }
+
+    .circle-text {
+      color: #8b3f3f;
+      font-size: 18px;
+      text-decoration: none;
+    }
+  }
+
+  .right {
+    .topics-list {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        justify-content: center;
+      }
+
+      .topic-thumb,
+      .topic-placeholder {
+        width: 35px;
+        height: 35px;
+        background-color: #d9d9d9;
+        border-radius: 4px;
+      }
+
+      .topic-title {
+        border-bottom: 1px solid #bfbfbf;
+        width: 120px;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+    }
+
+    .view-more {
+      display: block;
+      margin-top: 15px;
+      text-decoration: none;
+      color: #8b3f3f;
+      font-size: 14px;
+    }
+  }
+}

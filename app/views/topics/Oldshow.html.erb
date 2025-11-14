@@ -1,0 +1,56 @@
+<h1>Idolfan</h1>
+<h3>Topic詳細</h3>
+<div class="topic">
+  <p><%= @topic.group_name %></p>
+  <p><%= @topic.title %></p>
+  <p><%= @topic.content %></p>
+  <p><%= @topic.created_at %></p>
+    <% if user_signed_in? %>
+       <% if current_user.already_liked?(@topic) %>
+          <%= link_to topic_like_path(id: @topic.id, topic_id: @topic.id), data: { turbo_method: :delete } do %>
+              <p>いいねを取り消す</p><%= @topic.likes.count %>
+          <% end %>
+       <% else %>
+          <%= link_to topic_likes_path(id: @topic.id, topic_id: @topic.id), data: { turbo_method: :post }  do %>
+              <p>いいね</p><%= @topic.likes.count %>
+          <% end %>
+       <% end %>
+<% else %>
+    <p>いいねの数 = </p><%= @topic.likes.count %>
+<% end %>
+
+<h2>いいねしたユーザー</h2>
+<% @topic.liked_users.each do |user| %>
+  <li><%= user.email %></li>
+<% end %>
+
+<% if @topic.youtube_url.present? %>
+  <% youtube_id = @topic.youtube_url.split("=").last.split("/").last.split("?").first %>
+  <iframe width="560" height="315"
+          src="https://www.youtube.com/embed/<%= youtube_id %>"
+          frameborder="0"
+          allowfullscreen></iframe>
+<% end %>
+
+<div class="comment-wrapper">
+  <p>コメント一覧</p>
+  <% @comments.each do |c| %>
+    <div>
+      <%= c.user.email unless c.user.blank? %>
+      <br>
+      <%= c.body %>
+    </div>
+      <br>
+  <% end %>
+  
+  <% if user_signed_in? %>
+    <%= form_with(model: [@topic, @comment], local: true) do |f| %>
+      <%= f.text_area :body %>
+      <%= button_tag type: "submit" do %>
+        <i class="far fa-comments"></i> コメントする
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
+<%= link_to "Topic一覧に戻る", topics_path %>

@@ -1,0 +1,98 @@
+<div class="index-container">
+
+  <!-- 左：New Topics -->
+  <section class="new-topics">
+    <h2>New Topics</h2>
+    <ul>
+      <% @topics.each do |topic| %>
+        <li class="topic-item">
+
+          <!-- トピック画像 -->
+          <div class="topic-image">
+            <% if topic.image.attached? %>
+              <%= image_tag topic.image, alt: topic.title %>
+            <% else %>
+              <div class="no-image"></div>
+            <% end %>
+          </div>
+
+          <!-- タイトル・いいね・ボタン -->
+          <div class="topic-content">
+            <p class="topic-title">
+              <span class="group"><%= topic.group_name %></span> - <%= topic.title %>
+            </p>
+
+            <div class="topic-actions">
+              <!-- いいねボタン -->
+              <div class="like-container">
+                <% if user_signed_in? %>
+                  <% if current_user.already_liked?(topic) %>
+                    <%= link_to like_path(id: topic.likes.find_by(user: current_user).id),
+                                data: { turbo_method: :delete },
+                                class: "like-btn liked" do %>
+                    <% end %>
+                  <% else %>
+                    <%= link_to likes_path(likeable_type: "Topic", likeable_id: topic.id),
+                                data: { turbo_method: :post },
+                                class: "like-btn" do %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <div class="like-btn"></div>
+                <% end %>
+                <span class="like-count"><%= topic.likes.count %></span>
+              </div>
+
+              <!-- 詳細・編集・削除ボタン -->
+              <%= link_to '詳細', topic_path(topic), class: 'detail-btn' %>
+              <% if user_signed_in? && current_user.id == topic.user_id %>
+                <%= link_to '編集', edit_topic_path(topic), class: 'edit-btn' %>
+                <%= link_to '削除', topic_path(topic),
+                            data: { turbo_method: :delete, turbo_confirm: '本当に削除しますか？' },
+                            class: 'delete-btn' %>
+              <% end %>
+            </div>
+          </div>
+
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <!-- 右：検索・作成・Hot Topics -->
+  <aside class="right-column">
+    <div class="search-box">
+      <%= form_tag topics_path, method: :get do %>
+        <%= text_field_tag :search, params[:search], placeholder: "search topics" %>
+        <%= submit_tag "検索", class: "search-btn" %>
+      <% end %>
+    </div>
+
+    <div class="create-box">
+      <%= link_to 'create new topic', new_topic_path, class: 'create-btn' %>
+    </div>
+
+    <div class="hot-topics">
+      <h3>Hot topics</h3>
+      <ul>
+        <% @hot_topics.each do |topic| %>
+          <li>
+            <div class="hot-image">
+              <% if topic.image.attached? %>
+                <%= image_tag topic.image, alt: topic.title %>
+              <% else %>
+                <div class="no-image"></div>
+              <% end %>
+            </div>
+            <p><%= topic.title %></p>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </aside>
+</div>
+
+<!-- 一番下 -->
+<div class="back-link">
+  <%= link_to "Back to Top page", topics_top_path %>
+</div>

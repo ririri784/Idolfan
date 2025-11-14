@@ -1,0 +1,43 @@
+<%= form_for(@idol, class: 'form-horizontal', role: 'form') do |f| %>
+  <div class="idol-container">
+    <div class="col-12">
+      <p>Q1. あなたの性格に近いのはどれ？</p>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :question1, "1", id: "q1_1" %>
+      <label for="q1_1">まっすぐで誠実</label>
+      <%= f.radio_button :question1, "2", id: "q1_2" %>
+      <label for="q1_2">表現力が豊か</label>
+      <%= f.radio_button :question1, "3", id: "q1_3" %>
+      <label for="q1_3">独自の世界観を大切に</label>
+    </div>
+
+    <div class="col-12">
+      <p>Q2. どちらかと言うと…</p>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :question2, "1", id: "q2_1" %>
+      <label for="q2_1">周りに合わせる方</label>
+      <%= f.radio_button :question2, "2", id: "q2_2" %>
+      <label for="q2_2">自分の個性を出す方</label>
+      <%= f.radio_button :question2, "3", id: "q2_3" %>
+      <label for="q2_3">仲間との話し合いで決める方</label>
+    </div>
+
+    <div class="col-12">
+      <p>Q3. あなたが“推し”に惹かれる要素は？</p>
+    </div>
+    <div class="col-6">
+      <%= f.radio_button :question3, "1", id: "q3_1" %>
+      <label for="q3_1">一生懸命で誠実な姿に心を打たれる</label>
+      <%= f.radio_button :question3, "2", id: "q3_2" %>
+      <label for="q3_2">圧倒的なパフォーマンスや表現力に惹かれる</label>
+      <%= f.radio_button :question3, "3", id: "q3_3" %>
+      <label for="q3_3">個性的・カルチャー色強めの人に憧れる</label>
+    </div>
+  </div>
+
+  <div class="sindanbotan">
+    <%= f.submit " 結果 " %>
+  </div>
+<% end %>

@@ -1,0 +1,83 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ body {
+  background-color: #fdecec; /* 全面ピンク */
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: transparent;
+}
+
+body {
+  font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
+}
+
+/* ===== ヘッダー全体 ===== */
+header {
+  background-color: #5b3732; /* 茶色 */
+  color: white;
+  display: flex;
+  justify-content: space-between; /* 左右に配置 */
+  align-items: center;
+  padding: 10px 40px;
+  font-family: 'Vibur', cursive; /* 手書き風フォントがあればおしゃれに */
+}
+
+/* ===== タイトル（Idolfan） ===== */
+header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+/* ===== ヘッダー内のリスト ===== */
+.header-list ul {
+  list-style: none; /* 箇条書きマーク削除 */
+  display: flex; /* 横並び */
+  gap: 20px; /* 項目の間隔 */
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== 各リンク ===== */
+.header-list a {
+  color: white;
+  text-decoration: none; /* 下線を消す */
+  font-size: 16px;
+}
+
+.header-list a:hover {
+  text-decoration: underline; /* ホバーで下線を出す */
+}
+
+/* ===== ログアウトボタン（button_to）も整える ===== */
+.header-list form {
+  display: inline;
+}
+
+.header-list input[type="submit"] {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header-list input[type="submit"]:hover {
+  text-decoration: underline;
+}

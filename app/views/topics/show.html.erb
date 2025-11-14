@@ -1,0 +1,105 @@
+<div class="topic-show">
+  <div class="topic-header">
+    <% if @topic.image.present? %>
+      <%= image_tag @topic.image.url, class: "topic-main-image" %>
+    <% else %>
+      <div class="topic-placeholder"></div>
+    <% end %>
+
+    <div class="topic-info">
+      <h2 class="topic-group"><%= @topic.group_name %></h2>
+      <p class="topic-title"><%= @topic.title %></p>
+    </div>
+
+    <div class="topic-actions">
+      <%= link_to "Back to Topics", topics_path, class: "back-button" %>
+      <%= link_to "Add Comment", new_topic_comment_path(@topic), class: "comment-button" %>
+    </div>
+  </div>
+
+  <div class="topic-content">
+    <div class="topic-meta">
+      <span><%= @topic.user&.email %></span>
+      <span><%= @topic.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+    </div>
+
+    <p class="topic-body"><%= simple_format(@topic.content) %></p>
+
+    <% if @topic.youtube_url.present? %>
+      <% youtube_id = @topic.youtube_url.split("=").last.split("/").last.split("?").first %>
+      <div class="topic-youtube">
+        <iframe width="560" height="315"
+                src="https://www.youtube.com/embed/<%= youtube_id %>"
+                frameborder="0" allowfullscreen></iframe>
+      </div>
+    <% end %>
+  </div>
+
+  <hr class="topic-divider">
+
+  <div class="comments-section">
+    <% @comments.each do |comment| %>
+      <div class="comment-card">
+
+        <div class="comment-meta">
+          <span class="comment-user"><%= comment.user&.email %></span>
+          <span class="comment-date"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></span>
+        </div>
+
+        <% if comment.youtube_url.present? %>
+          <% youtube_id = comment.youtube_url.split("=").last.split("/").last.split("?").first %>
+          <div class="comment-youtube">
+            <iframe width="400" height="225"
+                    src="https://www.youtube.com/embed/<%= youtube_id %>"
+                    frameborder="0" allowfullscreen></iframe>
+          </div>
+        <% end %>
+
+        <% if comment.image.present? %>
+          <div class="comment-image">
+            <%= image_tag comment.image.url %>
+          </div>
+        <% end %>
+
+        <p class="comment-body"><%= simple_format(comment.body) %></p>
+
+        <!-- 🔥 コメント操作エリア（追加） -->
+        <div class="comment-actions">
+
+          <!-- ❤️ いいねボタン（polymorphic） -->
+          <div class="like-container">
+            <% if user_signed_in? %>
+              <% if current_user.already_liked?(comment) %>
+                <%= link_to like_path(id: comment.likes.find_by(user: current_user).id),
+                            data: { turbo_method: :delete },
+                            class: "like-btn liked" do %>
+                <% end %>
+              <% else %>
+                <%= link_to likes_path(likeable_type: "Comment", likeable_id: comment.id),
+                            data: { turbo_method: :post },
+                            class: "like-btn" do %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <div class="like-btn"></div>
+            <% end %>
+
+            <span class="like-count"><%= comment.likes.count %></span>
+          </div>
+
+          <!-- ✏️ 編集 & 🗑️ 削除（投稿者のみ） -->
+          <% if user_signed_in? && current_user.id == comment.user_id %>
+            <%= link_to "編集", edit_topic_comment_path(@topic, comment), class: "comment-edit-btn" %>
+            <%= link_to "削除",
+                  topic_comment_path(@topic, comment),
+                  data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
+                  class: "comment-delete-btn" %>
+          <% end %>
+
+        </div>
+        <!-- / コメント操作エリア -->
+
+      </div>
+    <% end %>
+  </div>
+</div>

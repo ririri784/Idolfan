@@ -1,0 +1,206 @@
+.topic-show {
+  background-color: #fef6f6;
+  padding: 20px 40px;
+  font-family: "Comic Neue", cursive;
+  color: #3d2b2b;
+
+  .topic-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff5f5;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    position: relative;
+
+    .topic-main-image, .topic-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 8px;
+      object-fit: cover;
+      background-color: #d9d9d9;
+    }
+
+    .topic-info {
+      flex-grow: 1;
+      margin-left: 20px;
+
+      .topic-group {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .topic-title {
+        font-size: 16px;
+        color: #5b4a4a;
+      }
+    }
+
+    .topic-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+
+      .back-button,
+      .comment-button {
+        background-color: #FDA7A7;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 13px;
+        transition: 0.2s;
+
+        &:hover {
+          background-color: #e48f8f;
+        }
+      }
+
+      .back-button {
+        background-color: #7e6463;
+      }
+    }
+  }
+
+  .topic-content {
+    background-color: #fffafa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+
+    .topic-meta {
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .topic-body {
+      font-size: 15px;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    .topic-youtube {
+      display: flex;
+      justify-content: center;
+      iframe {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  .topic-divider {
+    border: none;
+    border-top: 1px solid #b5928a;
+    margin-bottom: 30px;
+  }
+
+  .comments-section {
+    .comment-card {
+      background-color: #fffdfd;
+      border-radius: 10px;
+      padding: 15px;
+      margin-bottom: 25px;
+      border: 1px solid #eedede;
+
+      .comment-meta {
+        font-size: 12px;
+        color: #6b5555;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+
+      .comment-youtube,
+      .comment-image {
+        display: flex;
+        justify-content: center;
+        margin: 10px 0;
+
+        iframe,
+        img {
+          max-width: 90%;
+          border-radius: 8px;
+        }
+      }
+
+      .comment-body {
+        font-size: 14px;
+        line-height: 1.5;
+        color: #3d2b2b;
+      }
+
+      .comment-actions {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        margin-top: 12px;
+      }
+
+      /* いいね部分（index と共通） */
+      .like-container {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+      }
+
+      .like-btn {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        background-color: #ccc;
+        transform: rotate(-45deg);
+        cursor: pointer;
+        transition: transform 0.2s ease, background-color 0.3s ease;
+      }
+
+      .like-btn::before,
+      .like-btn::after {
+        content: "";
+        position: absolute;
+        width: 18px;
+        height: 18px;
+        background-color: inherit;
+        border-radius: 50%;
+      }
+
+      .like-btn::before { top: -9px; left: 0; }
+      .like-btn::after { top: 0; left: 9px; }
+
+      .like-btn.liked {
+        background-color: #ff4d6d;
+        transform: rotate(-45deg) scale(1.2);
+      }
+
+      .like-count {
+        font-size: 13px;
+        color: #555;
+      }
+
+      /* 編集 / 削除 */
+      .comment-edit-btn,
+      .comment-delete-btn {
+        padding: 4px 8px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 12px;
+        transition: 0.2s;
+      }
+
+      .comment-edit-btn {
+        background-color: #5c445ea9;
+        color: #fff;
+      }
+
+      .comment-delete-btn {
+        background-color: #f54b4ba7;
+        color: #fff;
+      }
+
+      
+    }
+  }
+}

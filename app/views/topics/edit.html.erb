@@ -1,0 +1,36 @@
+<div class="topics-edit">
+  <div class="form-container">
+    <h3>トピック編集</h3>
+
+    <%= form_with(model: @topic, local: true) do |f| %>
+      <div class="field">
+        <%= f.label :group_name, "Group name" %>
+        <%= f.text_field :group_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :title, "Title" %>
+        <%= f.text_field :title %>
+      </div>
+
+      <div class="field">
+        <%= f.label :content, "Content" %>
+        <%= f.text_area :content %>
+      </div>
+
+      <div class="field">
+        <%= f.label :image, "Image" %>
+        <%= f.file_field :image %>
+      </div>
+
+      <div class="field">
+        <%= f.label :youtube_url, "Youtube url" %>
+        <%= f.text_field :youtube_url %>
+      </div>
+
+      <%= f.submit "投稿する", class: "submit-btn" %>
+    <% end %>
+
+    <%= link_to "投稿一覧に戻る", topics_path, class: "back-link" %>
+  </div>
+</div>

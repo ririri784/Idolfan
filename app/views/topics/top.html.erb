@@ -1,0 +1,40 @@
+<!-- app/views/pages/top.html.erb -->
+<div class="top-page">
+
+  <!-- What is IdolFan?? -->
+  <section class="intro">
+    <h2>What is IdolFan??</h2>
+    <div class="intro-box">
+      <p>「女性アイドルの女性ファン」が気軽に交流することを目的としたサイトです。</p>
+    </div>
+  </section>
+
+  <!-- 下部2カラム -->
+  <section class="bottom-section">
+    <div class="left">
+      <h3>Recommend you</h3>
+      <div class="circle-btn">
+        <%= link_to "Let’s start!", new_idol_path, class: "circle-text" %>
+      </div>
+    </div>
+
+
+    <div class="right">
+      <h3>Topics</h3>
+      <ul class="topics-list">
+        <% @topics.limit(5).each do |topic| %>
+          <li>
+            <% if topic.image.attached? %>
+              <%= image_tag topic.image, class: "topic-thumb" %>
+            <% else %>
+              <div class="topic-placeholder"></div>
+            <% end %>
+            <span class="topic-title"><%= topic.title %></span>
+          </li>
+        <% end %>
+      </ul>
+      <%= link_to "view more...", topics_path, class: "view-more" %>
+    </div>
+  </section>
+
+</div>
