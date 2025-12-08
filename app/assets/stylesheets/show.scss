@@ -3,6 +3,19 @@
   padding: 20px 40px;
   font-family: "Comic Neue", cursive;
   color: #3d2b2b;
+  
+
+  /* コメントフォームの外側余白を調整 */
+  .comments-new {
+    margin-top: 0 !important;
+    margin-bottom: 20px;  /* 必要なら調整 */
+  }
+
+  /* コメントフォーム内の余白を縮める */
+  .comments-new .form-container {
+    padding: 20px !important;   /* 今広いなら半分くらいに */
+    margin-bottom: 10px !important;
+  }
 
   .topic-header {
     display: flex;
@@ -95,8 +108,15 @@
   .topic-divider {
     border: none;
     border-top: 1px solid #b5928a;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
+
+  /* フォーム下にも線を入れる */
+.comment-form-divider {
+  border: none;
+  border-top: 1px solid #b5928a;
+  margin: 20px 0;
+}
 
   .comments-section {
     .comment-card {
@@ -105,6 +125,8 @@
       padding: 15px;
       margin-bottom: 25px;
       border: 1px solid #eedede;
+
+      
 
       .comment-meta {
         font-size: 12px;
@@ -116,9 +138,9 @@
 
       .comment-youtube,
       .comment-image {
-        display: flex;
-        justify-content: center;
-        margin: 10px 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
 
         iframe,
         img {
@@ -204,3 +226,17 @@
     }
   }
 }
+
+.topic-show .comments-new {
+  min-height: auto !important;
+  }
+
+
+.topic-show .comments-section .comment-card .comment-image img {
+  max-width: 33% !important;
+  height: auto;
+  display: block;
+  margin: 10px 0;
+  border-radius: 8px;
+}
+

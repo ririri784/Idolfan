@@ -6,6 +6,45 @@
   padding-bottom: 50px;
 }
 
+/* 全体を中央に寄せて幅を制限 */
+.slide {
+  position: relative;
+  margin: 30px auto;      /* 上に30px、左右中央寄せ */
+  width: 70%;             /* 白い箱と同じくらいの幅に調整 */
+  max-width: 800px;       /* 必要に応じて変更 */
+  height: 350px;          /* 表示高さ（必要に応じて変更） */
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* 画像の基本設定 */
+.slide img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: auto;          /* ← 横幅いっぱいをやめる */
+  height: 100%;         /* ← 縦を基準にし全体を見せる */
+  opacity: 0;
+  animation: slideshow 25s infinite;
+}
+
+/* 各画像にズレを作る（スライドショーに必須！） */
+.slide img:nth-of-type(1) { animation-delay: 0s; }
+.slide img:nth-of-type(2) { animation-delay: 5s; }
+.slide img:nth-of-type(3) { animation-delay: 10s; }
+.slide img:nth-of-type(4) { animation-delay: 15s; }
+.slide img:nth-of-type(5) { animation-delay: 20s; }
+
+/* アニメーション本体 */
+@keyframes slideshow {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  20%  { opacity: 1; }
+  25%  { opacity: 0; }
+  100% { opacity: 0; }
+}
+
 /* ヘッダー */
 .header {
   background-color: #603c3c;
@@ -49,7 +88,7 @@
     border-radius: 5px;
 
     p {
-      font-family: 'Noto Sans JP', sans-serif;
+      font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
       color: #3a3a3a;
     }
   }
@@ -64,6 +103,7 @@
   margin-top: 40px;
 
   h3 {
+    font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
     font-size: 20px;
     color: #8b3f3f;
     margin-bottom: 15px;
@@ -93,6 +133,7 @@
 
   .right {
     .topics-list {
+      font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
       list-style: none;
       padding: 0;
 
@@ -113,6 +154,7 @@
       }
 
       .topic-title {
+        font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif;
         border-bottom: 1px solid #bfbfbf;
         width: 120px;
         font-family: 'Noto Sans JP', sans-serif;

@@ -16,7 +16,8 @@ class CommentsController < ApplicationController
 
   def new
     @topic = Topic.find(params[:topic_id])
-    @comment = @topic.comments.build
+    @comment = Comment.new
+    @comments = @topic.comments.order(created_at: :desc)
   end
 
   private

@@ -13,7 +13,6 @@
 
     <div class="topic-actions">
       <%= link_to "Back to Topics", topics_path, class: "back-button" %>
-      <%= link_to "Add Comment", new_topic_comment_path(@topic), class: "comment-button" %>
     </div>
   </div>
 
@@ -37,6 +36,37 @@
 
   <hr class="topic-divider">
 
+  <div class="comments-new">
+        <div class="form-container">
+          <h3>新規コメント投稿</h3>
+
+          <%= form_with(model: [@topic, @comment], local: true) do |f| %>
+            <div class="field">
+              <%= f.label :body, "Body" %>
+              <%= f.text_area :body %>
+            </div>
+
+            <div class="flexbox">
+
+              <div class="field">
+                <%= f.label :image, "Image" %>
+                <%= f.file_field :image %>
+              </div> 
+              
+              <div class="field">
+                <%= f.label :youtube_url, "Youtube url" %>
+                <%= f.text_field :youtube_url %>
+              </div>
+
+            </div>
+            <%= f.submit "投稿する", class: "submit-btn" %>
+          <% end %>
+
+        </div>
+  </div>
+
+  <hr class="comment-form-divider">
+
   <div class="comments-section">
     <% @comments.each do |comment| %>
       <div class="comment-card">
@@ -46,6 +76,7 @@
           <span class="comment-date"><%= comment.created_at.strftime("%Y/%m/%d %H:%M") %></span>
         </div>
 
+      
         <% if comment.youtube_url.present? %>
           <% youtube_id = comment.youtube_url.split("=").last.split("/").last.split("?").first %>
           <div class="comment-youtube">
@@ -60,6 +91,8 @@
             <%= image_tag comment.image.url %>
           </div>
         <% end %>
+
+
 
         <p class="comment-body"><%= simple_format(comment.body) %></p>
 
@@ -87,14 +120,6 @@
             <span class="like-count"><%= comment.likes.count %></span>
           </div>
 
-          <!-- ✏️ 編集 & 🗑️ 削除（投稿者のみ） -->
-          <% if user_signed_in? && current_user.id == comment.user_id %>
-            <%= link_to "編集", edit_topic_comment_path(@topic, comment), class: "comment-edit-btn" %>
-            <%= link_to "削除",
-                  topic_comment_path(@topic, comment),
-                  data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" },
-                  class: "comment-delete-btn" %>
-          <% end %>
 
         </div>
         <!-- / コメント操作エリア -->

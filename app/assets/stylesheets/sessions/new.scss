@@ -1,5 +1,5 @@
-.comments-new {
-  background-color: #fdf3f3; /* 淡いピンク背景 */
+.auth-login {
+  background-color: #fdf3f3;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -10,36 +10,16 @@
     padding: 30px 40px;
     border-radius: 16px;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    width: 1200px;
+    width: 360px;
     text-align: center;
-
-    h1 {
-      color: #4d2e2e;
-      font-family: 'Caveat', cursive;
-      font-size: 28px;
-      margin-bottom: 10px;
-    }
 
     h3 {
       color: #941212;
       font-family: 'Zen Maru Gothic', cursive;
-      font-size: 18px;
+      font-size: 20px;
       margin-bottom: 20px;
     }
-    
-    .flexbox{
-      display:flex;
-      width: 600%;
-      .field input[type="text"],
-      textarea {
-        width: 600px;
-        padding: 8px;
-        border: 1px solid #e3cfcf;
-        border-radius: 8px;
-        font-family: 'Caveat', cursive;
-        font-size: 15px;
-      }
-    }
+
     .field {
       margin-bottom: 18px;
       text-align: left;
@@ -52,27 +32,28 @@
         margin-bottom: 4px;
       }
 
-      input[type="text"],
-      textarea {
-        width: 95%;
+      input[type="email"],
+      input[type="password"],
+      input[type="text"] {
+        width: 100%;
         padding: 8px;
         border: 1px solid #e3cfcf;
         border-radius: 8px;
         font-family: 'Caveat', cursive;
         font-size: 15px;
       }
+    }
 
-      textarea {
-        height: 50px;
-      }
+    /* remember_me（チェックボックス） */
+    .checkbox-field {
+      display: flex;
+      align-items: center;
+      gap: 6px;
 
-      input[type="file"] {
-        font-family: 'Caveat', cursive;
+      label {
+        margin-bottom: 0;
         font-size: 14px;
       }
-
-      
-    
     }
 
     .submit-btn {
@@ -91,13 +72,14 @@
       }
     }
 
-    .back-link {
+    /* ログイン/登録リンク部分 */
+    a {
       display: block;
       margin-top: 15px;
       color: #5f3d3d;
       font-family: 'Zen Maru Gothic', cursive;
       text-decoration: underline;
-      font-size: 16px;
+      font-size: 15px;
 
       &:hover {
         color: #b36b6b;

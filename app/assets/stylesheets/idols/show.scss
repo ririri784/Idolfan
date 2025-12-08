@@ -1,0 +1,83 @@
+/* 全体の余白とフォント */
+.idol-container {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background-color: #fffafa; /* 参考画像の薄ピンク背景 */
+  border-radius: 12px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+/* 見出し（タイプ名：h6） */
+.idol-container h9 {
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  display: inline-block;
+  padding-bottom: 6px;
+}
+
+/* 説明文のブロック（1〜2行） */
+.idol-container p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  margin: 6px 0;
+}
+
+/* 「特にあなたに合うのは…」部分の装飾 */
+.special-block {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.artist-name {
+  color: #6b0c0c; /* 赤茶色 */
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+/* アーティスト画像 */
+.artist-photo {
+  width: 80%;
+  max-width: 450px;
+  border-radius: 10px;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* その他おすすめ */
+.other-list {
+  margin-top: 30px;
+  padding-top: 20px;
+  font-size: 14px;
+  color: #555;
+}
+
+.description {
+  margin-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #ccc;
+}
+
+.back-link {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.back-link a {
+  color: #555;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,105 @@
+/* 全体背景 */
+body {
+  background-color: #fff6f6;
+}
+
+/* タイトル */
+h3 {
+  text-align: center;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #941212;
+}
+
+/* 全体コンテナ */
+.idol-container {
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* 質問ブロック */
+.question-block {
+  margin-bottom: 40px;
+}
+
+.question-title {
+  font-size: 18px;
+  font-family: 'Caveat', cursive;
+  margin-bottom: 15px;
+  color: #3a2424;
+}
+
+/* 選択肢グリッド（添付画像のように2列） */
+.options-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+/* 選択肢ボックス */
+.option {
+  background-color: #ffffff;
+  border: 2px solid #e4d4d4;
+  border-radius: 10px;
+  padding: 20px 10px;
+  text-align: center;
+  cursor: pointer;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 14px;
+  color: #4a3a3a;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* hover */
+.option:hover {
+  background-color: #ffeaea;
+}
+
+/* ラジオボタンは非表示にする（ボックスをクリックできる状態にする） */
+.option input[type="radio"] {
+  display: none;
+}
+
+/* ラジオがチェックされたら色を変える！ */
+.option input[type="radio"]:checked + span {
+  background-color: transparent;
+}
+
+.option input[type="radio"]:checked ~ span,
+.option input[type="radio"]:checked {
+  color: #8b3a3a;
+}
+
+.option:has(input[type="radio"]:checked) {
+  background-color: #ffdfdf;
+  border-color: #f7a7a7;
+  transform: scale(1.02);
+}
+
+/* 診断ボタン */
+.sindanbotan {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.sindanbotan input[type="submit"] {
+  background-color: #f8b7b7;
+  color: #4d2e2e;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 16px;
+  font-family: 'Zen Maru Gothic', cursive;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.sindanbotan input[type="submit"]:hover {
+  background-color: #f29c9c;
+}

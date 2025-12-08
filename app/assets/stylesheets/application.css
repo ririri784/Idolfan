@@ -36,7 +36,7 @@ header {
   justify-content: space-between; /* 左右に配置 */
   align-items: center;
   padding: 10px 40px;
-  font-family: 'Vibur', cursive; /* 手書き風フォントがあればおしゃれに */
+  font-family: 'Caveat', 'Zen Maru Gothic', cursive, sans-serif; /* 手書き風フォントがあればおしゃれに */
 }
 
 /* ===== タイトル（Idolfan） ===== */
